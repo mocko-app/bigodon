@@ -2,129 +2,129 @@
 
 When writing your Bigodon template, you can use helper functions to perform common tasks. These are the categories of helpers:
 
-- [array](#Array-Helpers) ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js))
-- [comparison](#Comparison-Helpers) ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js))
-- [date](#Date-Helpers) ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/helpers/date.spec.js))
-- [string](#String-Helpers) ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js))
+- [array](#Array-Helpers) ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js))
+- [comparison](#Comparison-Helpers) ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js))
+- [date](#Date-Helpers) ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/helpers/date.spec.js))
+- [string](#String-Helpers) ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js))
 
 ## Array Helpers
 
-- [each](#each): Iterates over each item of an array. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L89-L95); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L225-L236))
-- [forEach](#forEach): Iterates over each item of an array with some context (isFirst, isLast, index, total). ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L97-L110); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L237-L258))
-- [itemAt](#itemAt): Returns the item at the given index. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L19-L28); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L48-L75))
-- [first](#first): Returns the first item of an array. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L3-L9); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L12-L28))
-- [last](#last): Returns the last item of an array. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L11-L17); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L30-L46))
-- [length](#length): Returns the length of an array. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L30-L36); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L77-L97))
-- [slice](#slice): Returns a slice of an array. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L60-L71); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L143-L174))
-- [after](#after): Returns the items after the given index. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L38-L47); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L99-L124))
-- [before](#before): Returns the items before the given index. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L49-L58); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L126-L141))
-- [includes](#includes): Returns true if the given item is in the array. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L73-L83); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L176-L210))
+- [each](#each): Iterates over each item of an array. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L89-L95); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L225-L236))
+- [forEach](#forEach): Iterates over each item of an array with some context (isFirst, isLast, index, total). ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L97-L110); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L237-L258))
+- [itemAt](#itemAt): Returns the item at the given index. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L19-L28); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L48-L75))
+- [first](#first): Returns the first item of an array. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L3-L9); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L12-L28))
+- [last](#last): Returns the last item of an array. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L11-L17); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L30-L46))
+- [length](#length): Returns the length of an array. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L30-L36); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L77-L97))
+- [slice](#slice): Returns a slice of an array. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L60-L71); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L143-L174))
+- [after](#after): Returns the items after the given index. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L38-L47); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L99-L124))
+- [before](#before): Returns the items before the given index. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L49-L58); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L126-L141))
+- [includes](#includes): Returns true if the given item is in the array. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L73-L83); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L176-L210))
 - [contains](#contains): Alias of [includes](#includes).
-- [isArray](#isArray): Returns true if the given item is an array. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L85-L87); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L212-L223))
-- [join](#join): Joins an array of items into a string with a separator. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L112-L118); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L260-L279))
-- [merge](#merge): Merges multiple arrays into one. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L120-L128); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L281-L293))
-- [reverse](#reverse): Reverses an array. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L130-L140); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L295-L314))
-- [pluck](#pluck): Returns an array of the given property from each item in the original one. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L142-L154); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L316-L336))
-- [unique](#unique): Returns an array of unique items from the original one. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L156-L162); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L338-L352))
-- [splice](#splice): Returns a splice of an array. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L173-L181); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L364-L391))
-- [sort](#sort): Sorts a numeric or string(based on the first letter of the word) array([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L194-L210); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L393-L436))
+- [isArray](#isArray): Returns true if the given item is an array. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L85-L87); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L212-L223))
+- [join](#join): Joins an array of items into a string with a separator. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L112-L118); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L260-L279))
+- [merge](#merge): Merges multiple arrays into one. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L120-L128); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L281-L293))
+- [reverse](#reverse): Reverses an array. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L130-L140); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L295-L314))
+- [pluck](#pluck): Returns an array of the given property from each item in the original one. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L142-L154); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L316-L336))
+- [unique](#unique): Returns an array of unique items from the original one. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L156-L162); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L338-L352))
+- [splice](#splice): Returns a splice of an array. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L173-L181); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L364-L391))
+- [sort](#sort): Sorts a numeric or string(based on the first letter of the word) array([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L194-L210); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L393-L436))
 
 From [string helpers](#String-Helpers):
-- [split](#split): Splits a string into an array of strings on each separator. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L6); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L89-L95))
+- [split](#split): Splits a string into an array of strings on each separator. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L6); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L89-L95))
 
 ## Code Helpers
 
-- [if](#if): Runs a block if the parameter is truthy without changing context. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/code.ts#L2); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/code-helpers.spec.js#L11-L27))
-- [typeof](#typeof): Returns the type of the argument. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/code.ts#L3); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/code-helpers.spec.js#L29-L38))
-- [with](#with): Runs a block with the given context. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/code.ts#L4); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/code-helpers.spec.js#L40-L74))
-- [return](#return): Halts the execution and the template will return what has already been rendered. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/code.ts#L5-L8); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/code-helpers.spec.js#L76-L97))
+- [if](#if): Runs a block if the parameter is truthy without changing context. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/code.ts#L2); [tests](https://github.com/mocko-app/bigodon/blob/main/test/code-helpers.spec.js#L11-L27))
+- [typeof](#typeof): Returns the type of the argument. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/code.ts#L3); [tests](https://github.com/mocko-app/bigodon/blob/main/test/code-helpers.spec.js#L29-L38))
+- [with](#with): Runs a block with the given context. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/code.ts#L4); [tests](https://github.com/mocko-app/bigodon/blob/main/test/code-helpers.spec.js#L40-L74))
+- [return](#return): Halts the execution and the template will return what has already been rendered. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/code.ts#L5-L8); [tests](https://github.com/mocko-app/bigodon/blob/main/test/code-helpers.spec.js#L76-L97))
 - [pick](#pick): Returns a property from an object using a string key.
 
 
 ## Comparison Helpers
 
-- [unless](#unless): Runs a block if the parameter is falsy without changing context. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L10); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L166-L172))
-- [and](#and): Returns true if all arguments are truthy. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L1); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L39-L64))
-- [or](#or): Returns true if any argument is truthy. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L2); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L66-L91))
-- [not](#not): Returns true if the argument is falsy. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L3); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L93-L99))
-- [eq](#eq): Returns true if the arguments are strictly equal (===). ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L4); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L11-L23))
-- [is](#is): Returns true if the arguments are loosely equal (==). ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L5); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L25-L37))
-- [gt](#gt): Returns true if the first argument is greater than the second. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L6); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L101-L115))
-- [gte](#gte): Returns true if the first argument is greater than or equal to the second. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L7); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L117-L131))
-- [lt](#lt): Returns true if the first argument is less than the second. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L8); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L133-L148))
-- [lte](#lte): Returns true if the first argument is less than or equal to the second. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L9); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L150-L164))
-- [default](#default): Returns the first argument that is not undefined or null. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L11); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L174-L199))
+- [unless](#unless): Runs a block if the parameter is falsy without changing context. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L10); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L166-L172))
+- [and](#and): Returns true if all arguments are truthy. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L1); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L39-L64))
+- [or](#or): Returns true if any argument is truthy. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L2); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L66-L91))
+- [not](#not): Returns true if the argument is falsy. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L3); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L93-L99))
+- [eq](#eq): Returns true if the arguments are strictly equal (===). ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L4); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L11-L23))
+- [is](#is): Returns true if the arguments are loosely equal (==). ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L5); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L25-L37))
+- [gt](#gt): Returns true if the first argument is greater than the second. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L6); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L101-L115))
+- [gte](#gte): Returns true if the first argument is greater than or equal to the second. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L7); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L117-L131))
+- [lt](#lt): Returns true if the first argument is less than the second. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L8); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L133-L148))
+- [lte](#lte): Returns true if the first argument is less than or equal to the second. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L9); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L150-L164))
+- [default](#default): Returns the first argument that is not undefined or null. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L11); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L174-L199))
 - [coalesce](#coalesce): Alias of [default](#default).
 - [firstNonNull](#firstNonNull): Alias of [default](#default).
 
 From [array helpers](#Array-Helpers):
-- [includes](#includes): Returns true if the given item is in the array or if a substring is in a string. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L73-L83); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L176-L210))
+- [includes](#includes): Returns true if the given item is in the array or if a substring is in a string. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L73-L83); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L176-L210))
 - [contains](#contains): Alias of [includes](#includes).
-- [isArray](#isArray): Returns true if the given item is an array. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L85-L87); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L212-L223))
+- [isArray](#isArray): Returns true if the given item is an array. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L85-L87); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L212-L223))
 
 From [string helpers](#String-Helpers):
-- [startsWith](#startsWith): Returns true if the string starts with the given value. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L7); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L97-L127))
-- [endsWith](#endsWith): Returns true if the string ends with the given value. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L8); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L129-L159))
+- [startsWith](#startsWith): Returns true if the string starts with the given value. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L7); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L97-L127))
+- [endsWith](#endsWith): Returns true if the string ends with the given value. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L8); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L129-L159))
 
 
 ## String Helpers
 
-- [append](#append): Appends several strings into one. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L3); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L11-L29))
-- [uppercase](#uppercase): Returns the string in uppercase. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L4); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L31-L55))
+- [append](#append): Appends several strings into one. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L3); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L11-L29))
+- [uppercase](#uppercase): Returns the string in uppercase. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L4); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L31-L55))
 - [upper](#upper): Alias of [uppercase](#uppercase).
 - [upcase](#upcase): Alias of [uppercase](#uppercase).
-- [lowercase](#lowercase): Returns the string in lowercase. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L5); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L57-L87))
+- [lowercase](#lowercase): Returns the string in lowercase. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L5); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L57-L87))
 - [lower](#lower): Alias of [lowercase](#lowercase).
 - [lowcase](#lowcase): Alias of [lowercase](#lowercase).
 - [downcase](#downcase): Alias of [lowercase](#lowercase).
 - [down](#down): Alias of [lowercase](#lowercase).
-- [capitalize](#capitalize): Capitalizes the first letter of the string. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L15-L18); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L223-L241))
+- [capitalize](#capitalize): Capitalizes the first letter of the string. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L15-L18); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L223-L241))
 - [capitalizeFirst](#capitalizeFirst): Alias of [capitalize](#capitalize).
-- [capitalizeAll](#capitalizeAll): Capitalizes the first letter of each word in a string. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L19-L22); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L243-L261))
+- [capitalizeAll](#capitalizeAll): Capitalizes the first letter of each word in a string. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L19-L22); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L243-L261))
 - [capitalizeWords](#capitalizeWords): Alias of [capitalizeAll](#capitalizeAll).
-- [startsWith](#startsWith): Returns true if the string starts with the given value. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L7); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L97-L127))
-- [endsWith](#endsWith): Returns true if the string ends with the given value. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L8); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L129-L159))
-- [toString](#toString): Returns the string representation of the given value. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L12); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L215-L221))
-- [split](#split): Splits a string into an array of strings on each separator. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L6); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L89-L95))
-- [replace](#replace): Replaces all occurrences of the given value with the given replacement. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L13); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L263-L281))
-- [substring](#substring): Returns a substring of the given string. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L23-L27); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L283-L301))
+- [startsWith](#startsWith): Returns true if the string starts with the given value. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L7); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L97-L127))
+- [endsWith](#endsWith): Returns true if the string ends with the given value. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L8); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L129-L159))
+- [toString](#toString): Returns the string representation of the given value. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L12); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L215-L221))
+- [split](#split): Splits a string into an array of strings on each separator. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L6); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L89-L95))
+- [replace](#replace): Replaces all occurrences of the given value with the given replacement. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L13); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L263-L281))
+- [substring](#substring): Returns a substring of the given string. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L23-L27); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L283-L301))
 - [json](#json): Returns the json string of an object.
 - [JSONstringify](#jsonstringify): Alias of [json](#json).
-- [trim](#trim): Removes whitespace around a string. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L9); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L161-L173))
-- [trimLeft](#trimLeft): Removes whitespace from the left side of a string. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L10); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L175-L193))
+- [trim](#trim): Removes whitespace around a string. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L9); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L161-L173))
+- [trimLeft](#trimLeft): Removes whitespace from the left side of a string. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L10); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L175-L193))
 - [trimStart](#trimStart): Alias of [trimLeft](#trimLeft).
-- [trimRight](#trimRight): Removes whitespace from the right side of a string. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L11); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L195-L213))
+- [trimRight](#trimRight): Removes whitespace from the right side of a string. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L11); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L195-L213))
 - [trimEnd](#trimEnd): Alias of [trimRight](#trimRight).
-- [padRight](#padRight): Pads the string with the given value to the right until it reaches the given length. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L35-L41); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L329-L353))
+- [padRight](#padRight): Pads the string with the given value to the right until it reaches the given length. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L35-L41); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L329-L353))
 - [padEnd](#padEnd): Alias of [padRight](#padRight).
-- [padLeft](#padLeft): Pads the string with the given value to the left until it reaches the given length. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/string.ts#L28-L34); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/string-helpers.spec.js#L303-L327))
+- [padLeft](#padLeft): Pads the string with the given value to the left until it reaches the given length. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/string.ts#L28-L34); [tests](https://github.com/mocko-app/bigodon/blob/main/test/string-helpers.spec.js#L303-L327))
 - [padStart](#padStart): Alias of [padLeft](#padLeft).
 - [uuid](#uuid): Generates a random UUID v4.
 
 From [array helpers](#Array-Helpers):
-- [length](#length): Returns the length of a string. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L30-L36); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L77-L97))
-- [includes](#includes): Returns true if the given substring is in the string. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L73-L83); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L176-L210))
+- [length](#length): Returns the length of a string. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L30-L36); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L77-L97))
+- [includes](#includes): Returns true if the given substring is in the string. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L73-L83); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L176-L210))
 - [contains](#contains): Alias of [includes](#includes).
-- [reverse](#reverse): Reverses a string. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L130-L140); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L295-L314))
-- [join](#join): Joins an array of items into a string with a separator. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/array.ts#L112-L118); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/array-helpers.spec.js#L260-L279))
+- [reverse](#reverse): Reverses a string. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L130-L140); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L295-L314))
+- [join](#join): Joins an array of items into a string with a separator. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/array.ts#L112-L118); [tests](https://github.com/mocko-app/bigodon/blob/main/test/array-helpers.spec.js#L260-L279))
 
 From [comparison helpers](#Comparison-Helpers):
-- [default](#default): Returns the first argument that is not undefined or null. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/comparison.ts#L11); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/comparison-helpers.spec.js#L174-L199))
+- [default](#default): Returns the first argument that is not undefined or null. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/comparison.ts#L11); [tests](https://github.com/mocko-app/bigodon/blob/main/test/comparison-helpers.spec.js#L174-L199))
 - [coalesce](#coalesce): Alias of [default](#default).
 - [firstNonNull](#firstNonNull): Alias of [default](#default).
 
 From [code helpers](#Code-Helpers):
-- [typeof](#typeof): Returns the type of the argument. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/code.ts#L3); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/code-helpers.spec.js#L29-L38))
+- [typeof](#typeof): Returns the type of the argument. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/code.ts#L3); [tests](https://github.com/mocko-app/bigodon/blob/main/test/code-helpers.spec.js#L29-L38))
 
 ## Date Helpers
 
-- [date](#date): Creates a date from a timestamp number, Date object, or ISO string with explicit time. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/helpers/date.spec.js))
-- [now](#now): Returns the current date/time as a Date object. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/helpers/date.spec.js))
-- [dateAdd](#dateadd): Adds time and returns a new date. Supports ms, s, min, h, day, week, month and year units (with aliases). ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/helpers/date.spec.js))
-- [dateSub](#datesub): Subtracts time and returns a new date. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/helpers/date.spec.js))
-- [dateIso](#dateiso): Returns the date in ISO format. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/helpers/date.spec.js))
-- [dateTimestamp](#datetimestamp): Returns unix timestamp in milliseconds. ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/helpers/date.spec.js))
-- [dateDiff](#datediff): Returns date difference with ms as default unit (supports up to week granularity). ([code](https://github.com/gabriel-pinheiro/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/gabriel-pinheiro/bigodon/blob/main/test/helpers/date.spec.js))
+- [date](#date): Creates a date from a timestamp number, Date object, or ISO string with explicit time. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/helpers/date.spec.js))
+- [now](#now): Returns the current date/time as a Date object. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/helpers/date.spec.js))
+- [dateAdd](#dateadd): Adds time and returns a new date. Supports ms, s, min, h, day, week, month and year units (with aliases). ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/helpers/date.spec.js))
+- [dateSub](#datesub): Subtracts time and returns a new date. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/helpers/date.spec.js))
+- [dateIso](#dateiso): Returns the date in ISO format. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/helpers/date.spec.js))
+- [dateTimestamp](#datetimestamp): Returns unix timestamp in milliseconds. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/helpers/date.spec.js))
+- [dateDiff](#datediff): Returns date difference with ms as default unit (supports up to week granularity). ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/date.ts); [tests](https://github.com/mocko-app/bigodon/blob/main/test/helpers/date.spec.js))
 
 From [date helpers](#Date-Helpers):
 - Date strings must include explicit time component, so `2024-01-01` is rejected while `2024-01-01T00:00:00.000Z` is accepted.
