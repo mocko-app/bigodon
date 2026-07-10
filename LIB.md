@@ -36,6 +36,28 @@ async function main() {
 main().catch(console.error);
 ```
 
+## Parse errors
+
+When a template is invalid, `parse` and `compile` throw a `ParseError` with the position of the failure:
+
+```javascript
+const { parse, ParseError } = require('bigodon');
+
+try {
+    parse('Hello, {{name!');
+} catch (error) {
+    if (error instanceof ParseError) {
+        console.log(error.message); // Error at line 1, column 14: Expected expression parameters or "}}"
+        console.log(error.line);    // 1
+        console.log(error.column);  // 14
+        console.log(error.index);   // 13, zero-based offset into the source
+        console.log(error.detail);  // Expected expression parameters or "}}"
+    }
+}
+```
+
+`detail` is the message without the position prefix, useful when formatting your own error messages. `parseExpression` and `compileExpression` throw it too.
+
 ## Helpers
 
 To add extra helpers, you need to instantiate your own `bigodon` object.
@@ -100,7 +122,7 @@ main().catch(console.error);
 
 ## Data from execution
 
-Your helpers can provide data from the templates to your code by using the `this.data` object.
+Your helpers can provide data from the templates to your code by using the `this.data` object. Helpers are called with the current `Execution` as `this`, and the `Execution` class is exported so you can type it in TypeScript.
 
 ```typescript
 import Bigodon from 'bigodon';
