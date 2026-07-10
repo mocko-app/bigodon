@@ -1,6 +1,6 @@
 {
   "name": "bigodon",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "Secure Handlebars/Mustache templating for user-provided templates with async helpers support and human-friendly parsing errors",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
