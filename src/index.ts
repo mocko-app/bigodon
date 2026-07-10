@@ -140,6 +140,8 @@ export const { run, runExpression } = defaultBigodon;
  */
 export const { compile, compileExpression } = defaultBigodon;
 
+export { ParseError } from 'pierrejs';
 export { TemplateStatement } from './parser/statements';
 export { BigodonOptions } from './runner/options';
+export { Execution } from './runner/execution';
 export default Bigodon;

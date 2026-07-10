@@ -1,7 +1,7 @@
 const Lab = require('@hapi/lab');
 const Code = require('@hapi/code');
 
-const { parse, parseExpression } = require('../../dist');
+const { parse, parseExpression, ParseError } = require('../../dist');
 const { VERSION } = require('../../dist/parser/index');
 
 const { describe, it } = exports.lab = Lab.script();
@@ -310,5 +310,22 @@ describe('parser', () => {
     it('should fail on parsing non string expression', () => {
         const expression = 1;
         expect(() => parseExpression(expression)).to.throw('Expression must be a string');
+    });
+
+    it('should throw ParseError with position fields on invalid templates', () => {
+        const text = 'first line\nsecond {{ line';
+        const error = expect(() => parse(text)).to.throw(ParseError);
+        expect(error.line).to.equal(2);
+        expect(error.column).to.be.a.number();
+        expect(error.index).to.be.a.number();
+        expect(error.detail).to.be.a.string();
+        expect(error.message).to.equal(`Error at line ${error.line}, column ${error.column}: ${error.detail}`);
+    });
+
+    it('should throw ParseError on invalid expressions', () => {
+        const error = expect(() => parseExpression('(foo')).to.throw(ParseError);
+        expect(error.line).to.equal(1);
+        expect(error.column).to.be.a.number();
+        expect(error.index).to.be.a.number();
     });
 });
