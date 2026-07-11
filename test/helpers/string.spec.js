@@ -320,9 +320,11 @@ describe('helpers', () => { describe('string', () => {
                 .to.reject(/json second argument must be a boolean or number/i);
         });
 
-        it('should reject values that cannot become strings', async () => {
-            await expect(compile('{{json value}}')({ value: undefined }))
-                .to.reject(/json could not stringify the provided value/i);
+        it('should stringify undefined as null', async () => {
+            expect(await compile('{{json value}}')({ value: undefined }))
+                .to.equal('null');
+            expect(await compile('{{json missing.path}}')({}))
+                .to.equal('null');
         });
 
         it('should surface native stringify errors like circular references', async () => {

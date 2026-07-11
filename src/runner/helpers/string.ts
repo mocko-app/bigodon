@@ -59,8 +59,7 @@ function json(obj: any, format?: boolean | number): string {
     }
 
     const result = JSON.stringify(obj, null, space);
-    ensure(typeof result === 'string', 'json could not stringify the provided value');
-    return result;
+    return typeof result === 'string' ? result : 'null';
 }
 
 export const stringHelpers = Object.assign(Object.create(null), {
