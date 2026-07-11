@@ -610,7 +610,7 @@ Processing completed.
 
 ### **json**
 
-`json` returns the json string of an object.
+`json` returns the json string of an object. `undefined` values (e.g. missing context paths) render as `null`, keeping the output valid JSON.
 
 #### Example:
 ```hbs
