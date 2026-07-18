@@ -21,6 +21,13 @@ export class Execution {
     public readonly variables: Record<string, LiteralValue> = {};
 
     /**
+     * Named parameters of the helper call currently being executed,
+     * assigned right before each helper invocation. Empty when the
+     * call has no named parameters.
+     */
+    public namedParams: Record<string, LiteralValue> = Object.create(null);
+
+    /**
      * Template execution, holds contexts, extra helpers, data.
      *
      * @param {object[]} contexts Contexts from which bigodon path expressions will evaluate

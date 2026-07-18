@@ -12,7 +12,7 @@ export type LiteralValue =
     string | number | boolean | null | undefined | object;
 
 const MIN_VERSION = 1;
-const MAX_VERSION = 3;
+const MAX_VERSION = 4;
 
 export async function run(ast: TemplateStatement,
                           context: object = {},
@@ -86,7 +86,7 @@ export async function runStatement(execution: Execution, statement: Statement): 
 
 async function runExpression(execution: Execution, expression: ExpressionStatement): Promise<LiteralValue> {
     // If there are parameters, the expression is a helper call
-    if (expression.params.length > 0) {
+    if (expression.params.length > 0 || expression.namedParams) {
         return await runHelperExpression(execution, expression);
     }
 

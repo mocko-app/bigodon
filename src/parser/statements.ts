@@ -17,11 +17,17 @@ export type CommentStatement = {
 
 export type ValueStatement = ExpressionStatement | LiteralStatement | VariableStatement;
 
+export type NamedParam = {
+    name: string;
+    value: ValueStatement;
+};
+
 export type ExpressionStatement = {
     type: 'EXPRESSION';
     loc: Location;
     path: string;
     params: ValueStatement[];
+    namedParams?: NamedParam[];
 };
 
 export type MustacheStatement = {

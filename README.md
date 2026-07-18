@@ -13,6 +13,7 @@ As well as most Handlebars features like:
 - Inverted blocks (`{{^name}}...{{/name}}`)
 - Else blocks (`{{#name}}...{{else}}...{{/name}}`)
 - Parent and current context (`{{#list}}{{$parent.name}} {{$this}}{{/list}}`)
+- Named parameters (`{{greet name greeting="Hi"}}`)
 
 Bigodon also supports:
 - Async helpers, you can await for requests, database access, file access and so on.

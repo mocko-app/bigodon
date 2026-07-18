@@ -96,6 +96,30 @@ async function main() {
 main().catch(console.error);
 ```
 
+## Named parameters
+
+Templates can pass named parameters to helpers (`{{greet "George" greeting="Hi"}}`). They don't change your helper's signature: positional arguments arrive as regular function arguments, and named parameters are available in `this.namedParams`, an object assigned right before each helper call. It always exists and is empty when the call has no named parameters, so you can read from it without guards.
+
+```javascript
+const Bigodon = require('bigodon').default;
+const bigodon = new Bigodon();
+
+bigodon.addHelper('greet', function (name) {
+    const greeting = this.namedParams.greeting || 'Hello';
+    return `${greeting}, ${name}!`;
+});
+
+async function main() {
+    const source = '{{greet name greeting="Hi"}}';
+    const template = bigodon.compile(source);
+    console.log(await template({ name: 'George' })); // Hi, George!
+}
+
+main().catch(console.error);
+```
+
+Helpers that don't read `this.namedParams` silently ignore any named parameters passed to them.
+
 ## Block helpers
 
 To add block helpers, simply create a helper that returns:
