@@ -8,6 +8,11 @@ const hReturn = function(this: Execution): '' {
     return '' as const;
 };
 
+function object(this: Execution, ...params: any[]): object {
+    ensure(params.length === 0, 'object only accepts named parameters');
+    return this.namedParams;
+}
+
 function pick(value: any, key: string): any {
     ensure(typeof key === 'string', 'pick second argument must be a string');
 
@@ -25,5 +30,5 @@ function pick(value: any, key: string): any {
 }
 
 export const codeHelpers = Object.assign(Object.create(null), {
-    if: hIf, typeof: hTypeof, with: hWith, return: hReturn, pick,
+    if: hIf, typeof: hTypeof, with: hWith, return: hReturn, pick, object,
 });

@@ -526,6 +526,7 @@ nth
 
         it('should not parse closing blocks with parameters', () => {
             expect(() => parse('{{#foo}}{{/foo bar}}')).to.throw(/closing blocks cannot have parameters/i);
+            expect(() => parse('{{#foo}}{{/foo bar=1}}')).to.throw(/closing blocks cannot have parameters/i);
         });
 
         it('should not parse else blocks outside blocks', () => {

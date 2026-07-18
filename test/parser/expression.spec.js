@@ -187,6 +187,112 @@ describe('parser', () => {
             });
         });
 
+        it('should parse named parameters', () => {
+            expect(parse('foo a=1')).to.equal({
+                type: 'EXPRESSION',
+                loc: { start: 0, end: 7 },
+                path: 'foo',
+                params: [],
+                namedParams: [{
+                    name: 'a',
+                    value: { type: 'LITERAL', loc: { start: 6, end: 7 }, value: 1 },
+                }],
+            });
+        });
+
+        it('should parse named parameters after positional parameters', () => {
+            expect(parse('foo bar a="x" b=$v c=baz.q')).to.equal({
+                type: 'EXPRESSION',
+                loc: { start: 0, end: 26 },
+                path: 'foo',
+                params: [{
+                    type: 'EXPRESSION',
+                    loc: { start: 4, end: 7 },
+                    path: 'bar',
+                    params: [],
+                }],
+                namedParams: [{
+                    name: 'a',
+                    value: { type: 'LITERAL', loc: { start: 10, end: 13 }, value: 'x' },
+                }, {
+                    name: 'b',
+                    value: { type: 'VARIABLE', loc: { start: 16, end: 18 }, name: '$v' },
+                }, {
+                    name: 'c',
+                    value: { type: 'EXPRESSION', loc: { start: 21, end: 26 }, path: 'baz.q', params: [] },
+                }],
+            });
+        });
+
+        it('should parse sub-expressions as named parameter values', () => {
+            expect(parse('foo a=(upper name)')).to.equal({
+                type: 'EXPRESSION',
+                loc: { start: 0, end: 18 },
+                path: 'foo',
+                params: [],
+                namedParams: [{
+                    name: 'a',
+                    value: {
+                        type: 'EXPRESSION',
+                        loc: { start: 7, end: 17 },
+                        path: 'upper',
+                        params: [{
+                            type: 'EXPRESSION',
+                            loc: { start: 13, end: 17 },
+                            path: 'name',
+                            params: [],
+                        }],
+                    },
+                }],
+            });
+        });
+
+        it('should parse parenthised literals as named parameter values', () => {
+            expect(parse('foo a=("x")')).to.equal({
+                type: 'EXPRESSION',
+                loc: { start: 0, end: 11 },
+                path: 'foo',
+                params: [],
+                namedParams: [{
+                    name: 'a',
+                    value: { type: 'LITERAL', loc: { start: 7, end: 10 }, value: 'x' },
+                }],
+            });
+        });
+
+        it('should parse nested named parameters', () => {
+            expect(parse('object a=(object b=1)')).to.equal({
+                type: 'EXPRESSION',
+                loc: { start: 0, end: 21 },
+                path: 'object',
+                params: [],
+                namedParams: [{
+                    name: 'a',
+                    value: {
+                        type: 'EXPRESSION',
+                        loc: { start: 10, end: 20 },
+                        path: 'object',
+                        params: [],
+                        namedParams: [{
+                            name: 'b',
+                            value: { type: 'LITERAL', loc: { start: 19, end: 20 }, value: 1 },
+                        }],
+                    },
+                }],
+            });
+        });
+
+        it('should give friendly errors for named parameters', () => {
+            expect(() => parse('foo a=1 a=2')).to.throw(/duplicate named parameter "a"/i);
+            expect(() => parse('foo a=1 2')).to.throw(/positional parameters cannot come after named parameters/i);
+            expect(() => parse('foo a=1 (bar)')).to.throw(/positional parameters cannot come after named parameters/i);
+            expect(() => parse('foo __proto__=1')).to.throw(/named parameter "__proto__" not allowed/i);
+            expect(() => parse('foo a=')).to.throw(/expected value after named parameter "a"/i);
+            expect(() => parse('foo a= 1')).to.throw(/expected value after named parameter "a"/i);
+            expect(() => parse('foo a=(bar')).to.throw(/make sure every parenthesis was closed/i);
+            expect(() => parse('"foo" a=1')).to.throw(/literal mustaches cannot have parameters/i);
+        });
+
         it('should not close mustache inside string literal', () => {
             expect(parse('"foo }}"')).to.equal({
                 type: 'LITERAL',

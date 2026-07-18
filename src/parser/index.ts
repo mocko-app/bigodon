@@ -39,7 +39,7 @@ const buildBlock = (loc: Location,
     return block;
 };
 
-export const VERSION = 3;
+export const VERSION = 4;
 
 export const $text: Parser<Statement> = text
     .map((value, loc): TextStatement => ({ type: 'TEXT', loc, value }))
@@ -127,7 +127,7 @@ export const $template = Pr.context('mustache', function* () {
                         /* $lab:coverage:on$ */
                     }
 
-                    if (expression.params.length > 0) {
+                    if (expression.params.length > 0 || expression.namedParams) {
                         yield Pr.fail(`Closing blocks cannot have parameters`);
                     }
                     const name = expression.path;

@@ -39,6 +39,7 @@ From [string helpers](#String-Helpers):
 - [with](#with): Runs a block with the given context. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/code.ts#L4); [tests](https://github.com/mocko-app/bigodon/blob/main/test/code-helpers.spec.js#L40-L74))
 - [return](#return): Halts the execution and the template will return what has already been rendered. ([code](https://github.com/mocko-app/bigodon/blob/main/src/runner/helpers/code.ts#L5-L8); [tests](https://github.com/mocko-app/bigodon/blob/main/test/code-helpers.spec.js#L76-L97))
 - [pick](#pick): Returns a property from an object using a string key.
+- [object](#object): Builds an object from its named parameters.
 
 
 ## Comparison Helpers
@@ -555,6 +556,37 @@ Literal dotted key: {{pick $this "foo.bar"}}
 ```
 Name: Alice
 Literal dotted key: baz
+```
+
+</details>
+
+---
+
+### **object**
+
+`object` builds an object from its named parameters. It accepts no positional parameters. Values can be literals, context paths, variables or parenthesized expressions, including nested `object` calls. Combine it with [json](#json) to render the result.
+
+#### Example:
+```hbs
+{{json (object id=user.id role="admin" address=(object city=user.city))}}
+```
+
+<details>
+<summary>Context and output</summary>
+
+### Context
+```json
+{
+    "user": {
+        "id": 42,
+        "city": "Lisbon"
+    }
+}
+```
+
+### Generated output
+```
+{"id":42,"role":"admin","address":{"city":"Lisbon"}}
 ```
 
 </details>

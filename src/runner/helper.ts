@@ -15,8 +15,17 @@ async function runHelper(execution: Execution, expression: ExpressionStatement):
         throw new Error(`Helper ${helperName} not found`);
     }
 
-    const paramsTasks = expression.params.map(p => runStatement(execution, p));
-    const params = await Promise.all(paramsTasks);
+    const params = [];
+    for (const param of expression.params) {
+        params.push(await runStatement(execution, param));
+    }
+
+    const namedParams = Object.create(null);
+    for (const { name, value } of expression.namedParams || []) {
+        namedParams[name] = await runStatement(execution, value);
+    }
+
+    execution.namedParams = namedParams;
     const result = await fn.apply(execution, params);
     return result;
 }

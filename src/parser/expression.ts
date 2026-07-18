@@ -1,9 +1,9 @@
 import Pr, { Parser } from 'pierrejs';
 import { $literal } from './literal';
-import { ExpressionStatement, Location, Statement, ValueStatement } from './statements';
+import { ExpressionStatement, Location, NamedParam, Statement, ValueStatement } from './statements';
 import { optionalSpaces } from './utils';
 import { $variable } from './variables';
-import { ensure } from '../utils';
+import { ensure, UNSAFE_KEYS } from '../utils';
 
 /* $lab:coverage:off$ */
 enum State {
@@ -12,6 +12,12 @@ enum State {
     GOT_PATH,
 }
 /* $lab:coverage:on$ */
+
+type NamedParamItem = { namedParam: NamedParam };
+type FrameItem = ValueStatement | NamedParamItem;
+type Frame = FrameItem[] & { hasNamed?: boolean; pendingName?: string };
+
+const isNamedParamItem = (item: FrameItem): item is NamedParamItem => 'namedParam' in item;
 
 const topOfStack = <T>(stack: T[]): T => stack[stack.length - 1];
 
@@ -23,8 +29,10 @@ export const path: Parser<ExpressionStatement> = Pr.regex('context path', /^[a-z
     params: [],
 }));
 
+const namedParamName = Pr.regex('named parameter', /^[a-zA-Z_][a-zA-Z0-9_]*=/);
+
 export const $expression: Parser<ValueStatement> = Pr.context('expression', function* () {
-    const stack = [[]];
+    const stack: Frame[] = [[]];
     let state: State = State._START;
 
     const expressionFromStack = expr => {
@@ -34,7 +42,9 @@ export const $expression: Parser<ValueStatement> = Pr.context('expression', func
         }
 
         ensure(expr.length > 0, '[internal bigodon error] expressionFromStack received an empty frame');
-        const [stmt, ...params] = expr;
+        const [stmt, ...rest] = expr;
+        const params = rest.filter(item => !isNamedParamItem(item));
+        const namedParams = rest.filter(isNamedParamItem).map(item => item.namedParam);
 
         // Below here, statements inside parentheses, a new frame
         // They can have length 1 like `(path)`, `("str")`, `($var)`
@@ -46,19 +56,22 @@ export const $expression: Parser<ValueStatement> = Pr.context('expression', func
         // no parenthesis, no new frame
         // Ex: `("str")`, `($var)`
         if (stmt.type !== 'EXPRESSION') {
-            ensure(params.length === 0, '[internal bigodon error] expressionFromStack received a non-expression with parameters');
+            ensure(rest.length === 0, '[internal bigodon error] expressionFromStack received a non-expression with parameters');
             return stmt;
         }
 
-        // Expressions without parameters (params.length === 0 && stmt.params.length === 0)
-        // or with parameters already filled by a subparser (params.length === 0 && stmt.params.length > 0)
-        if (params.length === 0) {
+        // Expressions without parameters (rest.length === 0 && stmt.params.length === 0)
+        // or with parameters already filled by a subparser (rest.length === 0 && stmt.params.length > 0)
+        if (params.length === 0 && namedParams.length === 0) {
             return stmt;
         }
 
         // Expressions with parameters to be parsed
-        ensure(stmt.params.length === 0, '[internal bigodon error] expressionFromStack received an expression with parsed and unparsed parameters');
+        ensure(stmt.params.length === 0 && !stmt.namedParams, '[internal bigodon error] expressionFromStack received an expression with parsed and unparsed parameters');
         stmt.params = params.map(expressionFromStack);
+        if (namedParams.length > 0) {
+            stmt.namedParams = namedParams;
+        }
         return stmt;
     };
 
@@ -118,7 +131,14 @@ export const $expression: Parser<ValueStatement> = Pr.context('expression', func
                     }
 
                     const expr = stack.pop();
-                    topOfStack(stack).push(expressionFromStack(expr));
+                    const processedExpr = expressionFromStack(expr);
+                    const parent = topOfStack(stack);
+                    if (expr.pendingName) {
+                        parent.push({ namedParam: { name: expr.pendingName, value: processedExpr } });
+                        parent.hasNamed = true;
+                    } else {
+                        parent.push(processedExpr);
+                    }
                     state = State.GOT_PATH;
                     break;
                 }
@@ -137,8 +157,43 @@ export const $expression: Parser<ValueStatement> = Pr.context('expression', func
                     return expressionFromStack(stack[0]);
                 }
 
+                const named = yield Pr.optional(namedParamName);
+                if (named) {
+                    const name = named.slice(0, -1);
+                    if (UNSAFE_KEYS.has(name)) {
+                        yield Pr.fail(`Named parameter "${name}" not allowed`);
+                    }
+
+                    const frame = topOfStack(stack);
+                    if (frame.some(item => isNamedParamItem(item) && item.namedParam.name === name)) {
+                        yield Pr.fail(`Duplicate named parameter "${name}"`);
+                    }
+
+                    const value = yield Pr.optional(Pr.either<Statement>($literal, $variable, path));
+                    if (value) {
+                        frame.push({ namedParam: { name, value } });
+                        frame.hasNamed = true;
+                        state = State.GOT_PATH;
+                        break;
+                    }
+
+                    const namedSubExpr = yield Pr.optional(Pr.string('('));
+                    if (namedSubExpr) {
+                        const child: Frame = [];
+                        child.pendingName = name;
+                        stack.push(child);
+                        state = State._START;
+                        break;
+                    }
+
+                    yield Pr.fail(`Expected value after named parameter "${name}"`);
+                }
+
                 const param = yield Pr.optional(Pr.either<Statement>($literal, $variable, path));
                 if (param) {
+                    if (topOfStack(stack).hasNamed) {
+                        yield Pr.fail('Positional parameters cannot come after named parameters');
+                    }
                     topOfStack(stack).push(param);
                     state = State.GOT_PATH;
                     break;
@@ -146,6 +201,9 @@ export const $expression: Parser<ValueStatement> = Pr.context('expression', func
 
                 const subExpr = yield Pr.optional(Pr.string('('));
                 if (subExpr) {
+                    if (topOfStack(stack).hasNamed) {
+                        yield Pr.fail('Positional parameters cannot come after named parameters');
+                    }
                     stack.push([]);
                     state = State._START;
                     break;
@@ -160,7 +218,13 @@ export const $expression: Parser<ValueStatement> = Pr.context('expression', func
                     const expr = stack.pop();
                     const processedExpr = expressionFromStack(expr);
                     processedExpr.loc.end = subExprEnd.start;
-                    topOfStack(stack).push(processedExpr);
+                    const parent = topOfStack(stack);
+                    if (expr.pendingName) {
+                        parent.push({ namedParam: { name: expr.pendingName, value: processedExpr } });
+                        parent.hasNamed = true;
+                    } else {
+                        parent.push(processedExpr);
+                    }
                     state = State.GOT_PATH;
                     break;
                 }

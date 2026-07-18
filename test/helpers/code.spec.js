@@ -27,6 +27,33 @@ describe('helpers', () => { describe('code', () => {
         });
     });
 
+    describe('object', () => {
+        it('should build an object from named parameters', async () => {
+            const templ = compile('{{json (object a=1 b="x" c=flag)}}');
+            expect(await templ({ flag: true })).to.equal('{"a":1,"b":"x","c":true}');
+        });
+
+        it('should build nested objects', async () => {
+            const templ = compile('{{json (object user=(object name=name))}}');
+            expect(await templ({ name: 'George' })).to.equal('{"user":{"name":"George"}}');
+        });
+
+        it('should build an empty object without parameters', async () => {
+            const templ = compile('{{json (object)}}');
+            expect(await templ()).to.equal('{}');
+        });
+
+        it('should not accept positional parameters', async () => {
+            const templ = compile('{{object 1 a=2}}');
+            await expect(templ()).to.reject(/object only accepts named parameters/i);
+        });
+
+        it('should be usable as a block context', async () => {
+            const templ = compile('{{#with (object a=1)}}{{a}}{{/with}}');
+            expect(await templ()).to.equal('1');
+        });
+    });
+
     describe('typeof', () => {
         it('should return typeof', async () => {
             const templ = compile('{{typeof foo}}');

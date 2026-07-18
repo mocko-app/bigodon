@@ -162,6 +162,33 @@ Hello, stranger!
 
 ---
 
+Helpers can also receive **named parameters**, written as `name=value` after all positional arguments. Values can be literals, context paths, variables or parenthesized expressions. The [object helper](HELPERS.md#object) builds an object from its named parameters:
+
+```hbs
+{{json (object id=id status="PENDING")}}
+```
+
+Named parameters must come after positional arguments, must be unique, and cannot have spaces around the `=`. Helpers that don't use named parameters simply ignore them.
+
+<details>
+<summary>Context and output</summary>
+
+### Context
+```json
+{
+    "id": 42
+}
+```
+
+### Generated output
+```
+{"id":42,"status":"PENDING"}
+```
+
+</details>
+
+---
+
 You can use `$this` to disambiguate between context path expressions and parameterless helper calls:
 
 ```hbs
