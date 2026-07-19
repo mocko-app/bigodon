@@ -12,4 +12,11 @@ export type BigodonOptions = {
      * @type {number}
      */
     maxExecutionMillis?: number;
+
+    /**
+     * Indicates whether the execution allows default helpers. Default helpers are provided by bigodon.
+     *
+     * @type {boolean}
+     */
+    allowDefaultHelpers?: boolean;
 };

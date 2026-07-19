@@ -34,12 +34,14 @@ export class Execution {
      * @param {Map<string, Function>} extraHelpers Extra helpers that can be called other than default bigodon helpers
      * @param {object?} data Data that cannot be accessed from the template but can be accessed and modified from helpers
      * @param {number} maxExecutionMillis Maximum milliseconds allowed for the template execution
+     * @param {boolean} allowDefaultHelpers Indicates whether the execution allows default helpers. Default helpers are provided by bigodon.
      */
     private constructor(
         public readonly contexts: object[],
         public readonly extraHelpers: Map<string, Function>,
         public readonly data: object,
         public readonly maxExecutionMillis: number,
+        public readonly allowDefaultHelpers: boolean,
     ) { }
 
     /**
@@ -95,6 +97,7 @@ export class Execution {
             extraHelpers,
             options.data,
             options.maxExecutionMillis || Infinity,
+            options.allowDefaultHelpers ?? true,
         );
     }
 }

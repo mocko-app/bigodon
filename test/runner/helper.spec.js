@@ -40,6 +40,22 @@ describe('runner', () => {
             await expect(result).to.reject(/helper non-existing not found/i);
         });
 
+        it('should not execute default helpers when disabled', async () => {
+            const templ = compile('Hello, {{upper name }}!');
+            const result = templ({ name: 'George' }, { allowDefaultHelpers: false });
+            await expect(result).to.reject(/helper upper not found/i);
+        });
+
+        it('should allow default helpers when enabled', async () => {
+            const templ = compile('Hello, {{upper name }}!');
+            const result = await templ({ name: 'George' }, { allowDefaultHelpers: true });
+            expect(result).to.equal('Hello, GEORGE!');
+
+            const templ2 = compile('Hello, {{upper name }}!');
+            const result2 = await templ2({ name: 'George' }, { allowDefaultHelpers: null });
+            expect(result2).to.equal('Hello, GEORGE!');
+        });
+
         it('should not allow unsafe keys as helper names', async () => {
             const templ = compile('Hello, {{__proto__ "Schmidt" }}!');
             await expect(templ()).to.reject(/helper __proto__ not allowed/i);

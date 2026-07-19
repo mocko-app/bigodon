@@ -3,11 +3,54 @@ const Code = require('@hapi/code');
 
 const { compile, compileExpression, run, default: Bigodon } = require('../../dist');
 const { VERSION } = require('../../dist/parser/index');
+const { Execution } = require('../../dist/runner/execution');
 
 const { describe, it } = exports.lab = Lab.script();
 const { expect } = Code;
 
 describe('runner', () => {
+    describe('Execution', () => {
+        it('should use default values in of()', () => {
+            const execution = Execution.of({});
+            expect(execution.extraHelpers).to.be.an.instanceof(Map);
+            expect(execution.extraHelpers.size).to.equal(0);
+            expect(execution.maxExecutionMillis).to.equal(Infinity);
+            expect(execution.allowDefaultHelpers).to.equal(true);
+        });
+
+        it('should handle explicit undefined values for all options', () => {
+            const execution = Execution.of({}, undefined, {
+                data: undefined,
+                maxExecutionMillis: undefined,
+                allowDefaultHelpers: undefined
+            });
+            expect(execution.maxExecutionMillis).to.equal(Infinity);
+            expect(execution.allowDefaultHelpers).to.equal(true);
+        });
+
+        it('should handle zero maxExecutionMillis', () => {
+            const execution = Execution.of({}, new Map(), { maxExecutionMillis: 0 });
+            expect(execution.maxExecutionMillis).to.equal(Infinity);
+        });
+
+        it('should handle null maxExecutionMillis', () => {
+            const execution = Execution.of({}, new Map(), { maxExecutionMillis: null });
+            expect(execution.maxExecutionMillis).to.equal(Infinity);
+        });
+
+        it('should handle null allowDefaultHelpers', () => {
+            const execution = Execution.of({}, new Map(), { allowDefaultHelpers: null });
+            expect(execution.allowDefaultHelpers).to.equal(true);
+        });
+
+        it('should handle explicit true/false allowDefaultHelpers', () => {
+            const e1 = Execution.of({}, new Map(), { allowDefaultHelpers: true });
+            expect(e1.allowDefaultHelpers).to.equal(true);
+            const e2 = Execution.of({}, new Map(), { allowDefaultHelpers: false });
+            expect(e2.allowDefaultHelpers).to.equal(false);
+        });
+    });
+
     it('should not run unsupported versions', async () => {
         await expect(run({
             type: 'TEMPLATE',

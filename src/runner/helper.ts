@@ -10,7 +10,7 @@ async function runHelper(execution: Execution, expression: ExpressionStatement):
         throw new Error(`Helper ${helperName} not allowed`);
     }
 
-    const fn = execution.extraHelpers.get(helperName) || helpers[helperName];
+    const fn = execution.extraHelpers.get(helperName) || (execution.allowDefaultHelpers ? helpers[helperName] : undefined);
     if (!fn) {
         throw new Error(`Helper ${helperName} not found`);
     }
